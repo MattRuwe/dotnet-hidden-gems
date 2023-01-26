@@ -9,7 +9,7 @@ namespace ImplicitConversionOperators
     public abstract class Car
     {
         public abstract int TopSpeed { get; }
-
+        #region implicit
         public static implicit operator Car(string typeOfCar)
         {
             switch (typeOfCar.ToLower())
@@ -26,6 +26,7 @@ namespace ImplicitConversionOperators
                     throw new ArgumentException("Invalid car type");
             }
         }
+        #endregion
     }
 
     public class Bmw : Car
