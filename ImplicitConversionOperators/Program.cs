@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            MyClass myClass1 = ClassConfiguration.ConfigOne;
-            Console.WriteLine(myClass1.ClassConfig);
+            #region stuff
+            //MyClass myClass1 = ClassConfiguration.ConfigOne;
+            //Console.WriteLine(myClass1.ClassConfig);
 
             //Console.WriteLine("----");
 
@@ -26,6 +27,7 @@
             //Console.WriteLine($"Type of car: {prologue.GetType().Name}");
             //Console.WriteLine($"Top speed:   {prologue.TopSpeed}");
             //Console.WriteLine($"Is Electric: {((Prologue)prologue).IsElectric}");
+            #endregion
         }
     }
 
