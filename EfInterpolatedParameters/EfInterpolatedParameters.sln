@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
+VisualStudioVersion = 17.14.36119.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfInterpolatedParameters", "EfInterpolatedParameters.csproj", "{418C7C6B-705C-48A0-813F-3ADD76B76AA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfInterpolatedParameters", "EfInterpolatedParameters.csproj", "{088E6F17-5DB0-0700-80DB-B7B077CA5277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{418C7C6B-705C-48A0-813F-3ADD76B76AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{418C7C6B-705C-48A0-813F-3ADD76B76AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{418C7C6B-705C-48A0-813F-3ADD76B76AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{418C7C6B-705C-48A0-813F-3ADD76B76AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088E6F17-5DB0-0700-80DB-B7B077CA5277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088E6F17-5DB0-0700-80DB-B7B077CA5277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088E6F17-5DB0-0700-80DB-B7B077CA5277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088E6F17-5DB0-0700-80DB-B7B077CA5277}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {00191C15-4D09-46CD-9BA7-E779DA4D8BE6}
+		SolutionGuid = {06D029E1-7A67-447F-91F7-73823D6A128B}
 	EndGlobalSection
 EndGlobal
