@@ -5,22 +5,15 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddHostedService<DatabaseInitializerHost>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogContext>(options =>
 {
-    using var scope = builder.Services.BuildServiceProvider().CreateScope();
-    var hostingEnvironment = scope.ServiceProvider.GetService<IWebHostEnvironment>();
-    var connectionString = $"Data Source={hostingEnvironment?.ContentRootPath}data.db";
-    options.UseSqlite(connectionString);
-});
+    options.UseSqlite("Data Source=data.db");
+}, ServiceLifetime.Scoped);
 
 var app = builder.Build();
-using (var scopedProvider = app.Services.CreateScope())
-{
-    scopedProvider.ServiceProvider.GetRequiredService<BlogContext>().Database.EnsureCreated();
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -33,18 +26,23 @@ app.MapGet("/blogposts", (IServiceProvider serviceProvider) =>
     {
         IEnumerable<Post> posts;
         IEnumerable<Blog> blogs;
-        using (var context = serviceProvider.GetRequiredService<BlogContext>())
-        {
-            posts = context.Posts.ToList();
-        }
-
-        using (var context = serviceProvider.GetRequiredService<BlogContext>())
-        {
-            blogs = context.Blogs.ToList();
-        }
+        var context = serviceProvider.GetRequiredService<BlogContext>();
+        posts = context.Posts.ToList();
+        blogs = context.Blogs.ToList();
 
 
-        return (blogs = blogs, posts = posts);
+        //using (var context = serviceProvider.GetRequiredService<BlogContext>())
+        //{
+        //    posts = context.Posts.ToList();
+        //}
+
+        //using (var context = serviceProvider.GetRequiredService<BlogContext>())
+        //{
+        //    blogs = context.Blogs.ToList();
+        //}
+
+
+        return new { Posts = posts, Blogs = blogs };
     })
 .WithName("blogposts");
 
@@ -62,6 +60,11 @@ public class BlogContext : DbContext
         base.Dispose();
     }
 
+    public override ValueTask DisposeAsync()
+    {
+        return base.DisposeAsync(); 
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Blog>()
@@ -77,6 +80,8 @@ public class BlogContext : DbContext
                 new Post {Id = 2, Title = "Second Post", Content = "Second Post Content", BlogId = 2},
                 new Post {Id = 3, Title = "Third Post", Content = "Third Post Content", BlogId = 1},
             });
+
+        base.OnModelCreating(modelBuilder);
     }
 
     public DbSet<Post> Posts { get; set; }
@@ -98,4 +103,22 @@ public class Post
     public string? Content { get; set; }
     public int BlogId { get; set; }
     public Blog Blog { get; set; }
+}
+
+class DatabaseInitializerHost(IServiceProvider serviceProvider, ILogger<DatabaseInitializerHost> logger) : IHostedService
+{
+    public async Task StartAsync(CancellationToken cancellationToken)
+    {
+        logger.LogDebug("Migrating database if needed.");
+        using var scope = serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<BlogContext>();
+        var connectionString = dbContext.Database.GetConnectionString();
+        await dbContext.Database.EnsureCreatedAsync(cancellationToken);
+        await dbContext.Database.MigrateAsync(cancellationToken);
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
 }
