@@ -3,24 +3,13 @@
 using MyLibrary;
 using Newtonsoft.Json;
 
-//var helloWorld = "Hello, World!".ToRandomCase();
-//Console.WriteLine(helloWorld);
-//Console.WriteLine(GetMyIpAddress().GetAwaiter().GetResult());
+var helloWorld = "Hello, World!";
+helloWorld = helloWorld.ToRandomCase(); // Using the extension method from MyLibrary
+Console.WriteLine(helloWorld);
 
-var p = new Poco("property1", "property2");
-var serialized = JsonConvert.SerializeObject(p);
-Console.WriteLine(serialized);
+// Demonstrates debugging into 3rd party libraries like Newtonsoft.Json
+//var p = new Poco("property1", "property2");
+//var serialized = JsonConvert.SerializeObject(p);
+//Console.WriteLine(serialized);
 
-
-
-async Task<string> GetMyIpAddress()
-{
-    var httpClient = new HttpClient();
-    var response = await httpClient.GetAsync("https://api.ipify.org?format=json");
-
-    var stringResponse = await response.Content.ReadAsStringAsync();
-
-    return stringResponse;
-}
-
-record Poco(string Property1, string Property2);
+//record Poco(string Property1, string Property2);
