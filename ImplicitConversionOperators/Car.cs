@@ -9,6 +9,7 @@ namespace ImplicitConversionOperators
     public abstract class Car
     {
         public abstract int TopSpeed { get; }
+
         #region implicit
         public static implicit operator Car(string typeOfCar)
         {
