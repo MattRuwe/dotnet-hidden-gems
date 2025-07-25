@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms", "WinForms\WinForms.csproj", "{99D4A959-8DC6-40DA-808A-A194DAEB9C26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleConsoleApp", "SimpleConsoleApp\SimpleConsoleApp.csproj", "{28C7E0E4-ACBA-4896-81D4-1D93812F7904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{99D4A959-8DC6-40DA-808A-A194DAEB9C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99D4A959-8DC6-40DA-808A-A194DAEB9C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99D4A959-8DC6-40DA-808A-A194DAEB9C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C7E0E4-ACBA-4896-81D4-1D93812F7904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C7E0E4-ACBA-4896-81D4-1D93812F7904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C7E0E4-ACBA-4896-81D4-1D93812F7904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C7E0E4-ACBA-4896-81D4-1D93812F7904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

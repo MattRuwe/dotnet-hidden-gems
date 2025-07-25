@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+// dotnet nuget locals all --clear
 
 using MyLibrary;
 using Newtonsoft.Json;

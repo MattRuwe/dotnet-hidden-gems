@@ -1,4 +1,6 @@
-﻿namespace MyLibrary
+﻿// dotnet nuget locals all --clear
+
+namespace MyLibrary
 {
     public static class StringExtensions
     {

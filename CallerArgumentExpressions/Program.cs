@@ -6,7 +6,7 @@ namespace CallerArgumentExpressions
     {
         static void Main(string[] args)
         {
-            Hello("Matt");
+            Hello("Nebraska Code");
             string? myString = null;
 
             NotNullBoring(myString, nameof(myString));
@@ -49,5 +49,10 @@ namespace CallerArgumentExpressions
                 //throw new ArgumentNullException(paramName: argumentExpression);
             }
         }
-    }
+
+        public static void TheRightWayToThrowArgumentNullException<T>(T argument)
+            where T : class?
+        {
+            ArgumentNullException.ThrowIfNull(argument);
+        }
 }

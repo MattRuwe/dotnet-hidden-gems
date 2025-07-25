@@ -26,11 +26,13 @@ app.MapGet("/blogposts", (IServiceProvider serviceProvider) =>
     {
         IEnumerable<Post> posts;
         IEnumerable<Blog> blogs;
+        // This is the proper way to handle a service resolved from the service provider.
         var context = serviceProvider.GetRequiredService<BlogContext>();
         posts = context.Posts.ToList();
         blogs = context.Blogs.ToList();
 
 
+        // The following will raise an exception because the DbContext is disposed after the request is completed.
         //using (var context = serviceProvider.GetRequiredService<BlogContext>())
         //{
         //    posts = context.Posts.ToList();
